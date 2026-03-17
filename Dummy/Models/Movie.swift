@@ -2,12 +2,8 @@
 //  Movie.swift
 //  Dummy
 //
-//  Created by Pranav Kohli on 09/03/26.
+//  Created by Pranav Kohli on 10/03/26.
 //
-
-import Foundation
-
-
 
 struct Movie:Decodable{
     let id:String

@@ -2,40 +2,23 @@
 //  MovieViewModel.swift
 //  Dummy
 //
-//  Created by Pranav Kohli on 09/03/26.
+//  Created by Pranav Kohli on 10/03/26.
 //
 
 import UIKit
+import Combine
+
+
 
 class MovieViewModel{
-    var movies:[Movie] = []
     
+    @Published private(set) var movies:[Movie] = []
     
-    func fetchMovies(completion: @escaping () -> Void){
-        guard let url = URL(string: "https://ghibliapi.vercel.app/films/") else {return}
-        
-       
-        URLSession.shared.dataTask(with: url){
-            data,response,error in
-            guard let data = data else {return}
-            
-            do{
-                let movie = try JSONDecoder().decode([Movie].self, from: data)
-                
-                DispatchQueue.main.async {
-                    self.movies = movie
-                    completion()
-                    
-                }
-            }catch{
-                
-            }
-        }.resume()
+    let movieservice:MovieService
+    
+    init(movieservice:MovieService){
+        self.movieservice = movieservice
     }
-    
-    
-    
-    
     
     func numberOfMovies() -> Int{
         return movies.count
@@ -46,32 +29,27 @@ class MovieViewModel{
     }
     
     
-    func titleForMovie(at index:Int) -> String{
-        return movies[index].title
-    }
-    
-    
-    
-    func imageUrl(at index:Int) -> String{
-        return movies[index].image
-    }
-    
-    
-    
-    
-    func fetchImage(from urlString:String, completion:@escaping (UIImage?)->()){
-        guard let url = URL(string: urlString) else { return }
+    func fetchMovies(){
+        guard let u = URL(string:"https://ghibliapi.vercel.app/films/") else {return}
         
-        URLSession.shared.dataTask(with: url){
-            data,_,_ in
-            guard let data = data else {return}
-            let image = UIImage(data: data)
+        movieservice.fetchMovies(url: u){
+            movies in
             DispatchQueue.main.async {
-                completion(image)
+                self.movies = movies
             }
-            
-        }.resume()
+        }
     }
     
     
+    func fetchImage(at index:Int, completion:@escaping (UIImage?)->()){
+        
+        let movie_url = movies[index].image
+        
+        guard let u = URL(string: movie_url) else {return}
+        
+        movieservice.fetchImage(url: u){
+            img in completion(img)
+        }
+        
+    }
 }

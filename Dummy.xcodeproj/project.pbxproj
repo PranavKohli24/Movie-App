@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		8127E48B2F69100000FA0503 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 810780322F5E923E00B4B4DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 810780392F5E923E00B4B4DA;
+			remoteInfo = Dummy;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8107803A2F5E923E00B4B4DA /* Dummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8127E4872F69100000FA0503 /* DummyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DummyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -39,6 +50,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8127E4842F69100000FA0503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -54,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				8107803A2F5E923E00B4B4DA /* Dummy.app */,
+				8127E4872F69100000FA0503 /* DummyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +102,26 @@
 			productReference = 8107803A2F5E923E00B4B4DA /* Dummy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		8127E4862F69100000FA0503 /* DummyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8127E48F2F69100000FA0503 /* Build configuration list for PBXNativeTarget "DummyTests" */;
+			buildPhases = (
+				8127E4832F69100000FA0503 /* Sources */,
+				8127E4842F69100000FA0503 /* Frameworks */,
+				8127E4852F69100000FA0503 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8127E48C2F69100000FA0503 /* PBXTargetDependency */,
+			);
+			name = DummyTests;
+			packageProductDependencies = (
+			);
+			productName = DummyTests;
+			productReference = 8127E4872F69100000FA0503 /* DummyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +134,10 @@
 				TargetAttributes = {
 					810780392F5E923E00B4B4DA = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					8127E4862F69100000FA0503 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 810780392F5E923E00B4B4DA;
 					};
 				};
 			};
@@ -113,12 +156,20 @@
 			projectRoot = "";
 			targets = (
 				810780392F5E923E00B4B4DA /* Dummy */,
+				8127E4862F69100000FA0503 /* DummyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		810780382F5E923E00B4B4DA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8127E4852F69100000FA0503 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +186,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8127E4832F69100000FA0503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8127E48C2F69100000FA0503 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 810780392F5E923E00B4B4DA /* Dummy */;
+			targetProxy = 8127E48B2F69100000FA0503 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		8107804E2F5E924000B4B4DA /* Debug */ = {
@@ -321,6 +387,48 @@
 			};
 			name = Release;
 		};
+		8127E48D2F69100000FA0503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WR6T9V7W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pranav.DummyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dummy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dummy";
+			};
+			name = Debug;
+		};
+		8127E48E2F69100000FA0503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WR6T9V7W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pranav.DummyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dummy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dummy";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -338,6 +446,15 @@
 			buildConfigurations = (
 				8107804E2F5E924000B4B4DA /* Debug */,
 				8107804F2F5E924000B4B4DA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8127E48F2F69100000FA0503 /* Build configuration list for PBXNativeTarget "DummyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8127E48D2F69100000FA0503 /* Debug */,
+				8127E48E2F69100000FA0503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

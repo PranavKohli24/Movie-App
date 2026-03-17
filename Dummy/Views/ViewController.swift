@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 //
 //struct Movie:Decodable{
@@ -21,26 +22,26 @@ import UIKit
 class ViewController: UIViewController {
 
     let flowlayout = UICollectionViewFlowLayout()
-    
     lazy var collectionview = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
     
+    let movieservice = MovieService()
+    lazy var movieviewmodel = MovieViewModel(movieservice: movieservice)
     
-    let viewmodel = MovieViewModel()
-//
-//    var movies:[Movie] = []
+    
+    var subscription = Set<AnyCancellable>()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemGray4
         
         title = "Movies"
         
         
-        view.backgroundColor = .systemGray3
-        
         view.addSubview(collectionview)
+        collectionview.backgroundColor = .systemBrown
         
         collectionview.translatesAutoresizingMaskIntoConstraints = false
-        
-        collectionview.backgroundColor = .systemBlue
         
         NSLayoutConstraint.activate([
             collectionview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -52,98 +53,66 @@ class ViewController: UIViewController {
         collectionview.delegate = self
         collectionview.dataSource = self
         
-        collectionview.register(MovieCell.self, forCellWithReuseIdentifier: "cell")
+        collectionview.register(Movie_Cell.self, forCellWithReuseIdentifier: "movie_cell")
+        
+        movieviewmodel.fetchMovies()
         
         
-//        fetchMovies()
+        movieviewmodel.$movies.sink{
+            [weak self] _ in self?.collectionview.reloadData()
+        }.store(in: &subscription)
         
-        viewmodel.fetchMovies{
-            self.collectionview.reloadData()
-        }
         
     }
-    
-    
-    
-    
 }
 
 
 extension ViewController:UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewmodel.numberOfMovies()
+        return movieviewmodel.numberOfMovies()
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MovieCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie_cell", for: indexPath) as! Movie_Cell
+        let movie = movieviewmodel.movie(at: indexPath.item)
+        cell.movie_label.text = movie.title
         
-//        let movie = viewmodel.movies[indexPath.row]
-//        let movie = viewmodel.movie(at: indexPath.row)
-//        
-//        cell.label.text = movie.title
-//        
-        
-        cell.label.text = viewmodel.titleForMovie(at: indexPath.row)
-        let imageUrl = viewmodel.imageUrl(at: indexPath.row)
-//        
-//        if let url = URL(string: imageUrl){
-//            
-//            URLSession.shared.dataTask(with: url){
-//                data,_,_ in
-//                if let data{
-//                    
-//                    DispatchQueue.main.async {
-//                        cell.imageview.image = UIImage(data: data)
-//                    }
-//                    
-//                }
-//            }.resume()
-//        }
-        
-        
-        viewmodel.fetchImage(from: imageUrl){
-            image in cell.imageview.image = image
+        movieviewmodel.fetchImage(at: indexPath.item){
+            
+            img in cell.imageview.image = img
+            
         }
+        
+        cell.imageview.image = nil
+        cell.isSelected = false
         
         return cell
     }
     
     
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 170, height: 200)
+        return CGSize(width: 180, height: 180)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 12, bottom: 10, right: 12)
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 15
-    }
-    
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let detailVC = DetailViewController()
-//        let movie = movies[indexPath.row]
-        let movie = viewmodel.movie(at: indexPath.row)
+        let movie = movieviewmodel.movie(at: indexPath.item)
         
         detailVC.movie_title = movie.title
-        
         detailVC.desc = movie.description
-        detailVC.actorUrls = movie.people
-
-        
+        detailVC.castUrls = movie.people
         
         navigationController?.pushViewController(detailVC, animated: true)
-        
-        
     }
 }

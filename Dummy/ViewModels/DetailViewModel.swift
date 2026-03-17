@@ -2,53 +2,50 @@
 //  DetailViewModel.swift
 //  Dummy
 //
-//  Created by Pranav Kohli on 09/03/26.
+//  Created by Pranav Kohli on 10/03/26.
 //
 
 import UIKit
 import Combine
 
-
-
 class DetailViewModel{
-//    @Published var actors:[Actors] = []
-//    
-    @Published var actors:[Actors] = []
+    @Published var cast:[Cast] = []
+    
+    let castservice:CastService
+    
+    init(castservice:CastService){
+        self.castservice = castservice
+    }
     
     
-    let actorService:ActorService
+    func numberOfCast()->Int{
+        return cast.count
+    }
     
-    init(actorService:ActorService){
-        self.actorService = actorService
+    func castPerson(at index:Int) -> Cast{
+        return cast[index]
     }
     
     
     
-    func fetchActors(_ actorUrls:[String]){
-        for u in actorUrls{
+    
+    func fetchCast(_ castUrls:[String]){
+        for u in castUrls{
             guard let url = URL(string: u) else {return}
             
-            
-            actorService.fetchActors(url: url, completion: {
-                actor in
-                if let actor = actor {
+            castservice.fetchCast(url: url){
+                c in
+                if let c{
                     DispatchQueue.main.async {
-                        self.actors.append(actor)
+                        self.cast.append(c)
                         
                     }
-                }
-            })
                     
+                }
+                
+            }
+            
+            
         }
-    }
-    
-    
-    func numberOfActors() -> Int{
-        return actors.count
-    }
-    
-    
-    func nameForActor(at index:Int) -> String{
-        return actors[index].name
     }
 }
