@@ -12,7 +12,7 @@ import Combine
 
 class MovieViewModel{
     
-    @Published private(set) var movies:[Movie] = []
+    @Published var movies:[Movie] = []
     
     let movieservice:MovieService
     

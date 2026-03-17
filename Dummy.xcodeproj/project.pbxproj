@@ -14,11 +14,19 @@
 			remoteGlobalIDString = 810780392F5E923E00B4B4DA;
 			remoteInfo = Dummy;
 		};
+		8127E4982F69133E00FA0503 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 810780322F5E923E00B4B4DA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 810780392F5E923E00B4B4DA;
+			remoteInfo = Dummy;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8107803A2F5E923E00B4B4DA /* Dummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8127E4872F69100000FA0503 /* DummyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DummyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8127E4942F69133E00FA0503 /* Dummy_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dummy_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,6 +37,15 @@
 			);
 			target = 810780392F5E923E00B4B4DA /* Dummy */;
 		};
+		8127E4C92F6929AA00FA0503 /* Exceptions for "Dummy" folder in "Dummy_Tests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models/Movie.swift,
+				Services/MovieService.swift,
+				ViewModels/MovieViewModel.swift,
+			);
+			target = 8127E4932F69133E00FA0503 /* Dummy_Tests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -36,8 +53,14 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				8107804C2F5E924000B4B4DA /* Exceptions for "Dummy" folder in "Dummy" target */,
+				8127E4C92F6929AA00FA0503 /* Exceptions for "Dummy" folder in "Dummy_Tests" target */,
 			);
 			path = Dummy;
+			sourceTree = "<group>";
+		};
+		8127E4952F69133E00FA0503 /* Dummy_Tests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Dummy_Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -57,6 +80,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8127E4912F69133E00FA0503 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -64,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				8107803C2F5E923E00B4B4DA /* Dummy */,
+				8127E4952F69133E00FA0503 /* Dummy_Tests */,
 				8107803B2F5E923E00B4B4DA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,6 +104,7 @@
 			children = (
 				8107803A2F5E923E00B4B4DA /* Dummy.app */,
 				8127E4872F69100000FA0503 /* DummyTests.xctest */,
+				8127E4942F69133E00FA0503 /* Dummy_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +154,29 @@
 			productReference = 8127E4872F69100000FA0503 /* DummyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8127E4932F69133E00FA0503 /* Dummy_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8127E49A2F69133E00FA0503 /* Build configuration list for PBXNativeTarget "Dummy_Tests" */;
+			buildPhases = (
+				8127E4902F69133E00FA0503 /* Sources */,
+				8127E4912F69133E00FA0503 /* Frameworks */,
+				8127E4922F69133E00FA0503 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8127E4992F69133E00FA0503 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8127E4952F69133E00FA0503 /* Dummy_Tests */,
+			);
+			name = Dummy_Tests;
+			packageProductDependencies = (
+			);
+			productName = Dummy_Tests;
+			productReference = 8127E4942F69133E00FA0503 /* Dummy_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -136,6 +191,10 @@
 						CreatedOnToolsVersion = 26.2;
 					};
 					8127E4862F69100000FA0503 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 810780392F5E923E00B4B4DA;
+					};
+					8127E4932F69133E00FA0503 = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = 810780392F5E923E00B4B4DA;
 					};
@@ -157,6 +216,7 @@
 			targets = (
 				810780392F5E923E00B4B4DA /* Dummy */,
 				8127E4862F69100000FA0503 /* DummyTests */,
+				8127E4932F69133E00FA0503 /* Dummy_Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -170,6 +230,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8127E4852F69100000FA0503 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8127E4922F69133E00FA0503 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -193,6 +260,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8127E4902F69133E00FA0503 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -200,6 +274,11 @@
 			isa = PBXTargetDependency;
 			target = 810780392F5E923E00B4B4DA /* Dummy */;
 			targetProxy = 8127E48B2F69100000FA0503 /* PBXContainerItemProxy */;
+		};
+		8127E4992F69133E00FA0503 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 810780392F5E923E00B4B4DA /* Dummy */;
+			targetProxy = 8127E4982F69133E00FA0503 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,6 +508,48 @@
 			};
 			name = Release;
 		};
+		8127E49B2F69133E00FA0503 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WR6T9V7W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pranav.Dummy-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dummy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dummy";
+			};
+			name = Debug;
+		};
+		8127E49C2F69133E00FA0503 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WR6T9V7W7;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pranav.Dummy-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dummy.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dummy";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,6 +576,15 @@
 			buildConfigurations = (
 				8127E48D2F69100000FA0503 /* Debug */,
 				8127E48E2F69100000FA0503 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8127E49A2F69133E00FA0503 /* Build configuration list for PBXNativeTarget "Dummy_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8127E49B2F69133E00FA0503 /* Debug */,
+				8127E49C2F69133E00FA0503 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

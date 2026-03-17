@@ -20,6 +20,8 @@ import Combine
 //}
 
 class ViewController: UIViewController {
+    
+    let label = UILabel()
 
     let flowlayout = UICollectionViewFlowLayout()
     lazy var collectionview = UICollectionView(frame: .zero, collectionViewLayout: flowlayout)
@@ -37,6 +39,25 @@ class ViewController: UIViewController {
         
         title = "Movies"
         
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
+        label.text = "App info"
+        label.backgroundColor = .systemCyan
+        label.textAlignment = .center
+        
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            label.widthAnchor.constraint(equalToConstant: 100),
+            label.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(infoTapped))
+        label.addGestureRecognizer(tap)
+        
+        
         
         view.addSubview(collectionview)
         collectionview.backgroundColor = .systemBrown
@@ -44,7 +65,7 @@ class ViewController: UIViewController {
         collectionview.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
             collectionview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionview.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -63,6 +84,13 @@ class ViewController: UIViewController {
         }.store(in: &subscription)
         
         
+    }
+    
+    
+    @objc func infoTapped(){
+        let alert = UIAlertController(title: "Ghibli Movies", message: "Data from Studio Ghibli API", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okkk", style: .default))
+        present(alert,animated: true)
     }
 }
 
