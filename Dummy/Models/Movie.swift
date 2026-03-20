@@ -12,5 +12,6 @@ struct Movie:Decodable{
     let description:String
     let director:String
     let producer:String
+    let release_date:String
     let people:[String]
 }

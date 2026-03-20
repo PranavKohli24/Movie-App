@@ -16,6 +16,12 @@ class MovieViewModel{
     
     let movieservice:MovieService
     
+    
+    var desc:String?
+    var producer:String?
+    var director:String?
+    var release_date:String?
+    
     init(movieservice:MovieService){
         self.movieservice = movieservice
     }
@@ -51,5 +57,33 @@ class MovieViewModel{
             img in completion(img)
         }
         
+    }
+    
+    
+    
+    func movieDescription(at index:Int) -> String{
+        print("desc")
+        print(movies.count)
+        return movies[index].description
+    }
+    
+    func movieTitle(at index:Int) -> String{
+        print("hello")
+        print(movies.count)
+        print(index)
+        return movies[index].title
+        
+    }
+    
+    func movieProducer(at index:Int) -> String{
+        return movies[index].producer
+    }
+    
+    func movieDirector(at index:Int) -> String{
+        return movies[index].director
+    }
+    
+    func movieReleaseDate(at index:Int) -> String{
+        return movies[index].release_date
     }
 }

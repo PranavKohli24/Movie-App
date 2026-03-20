@@ -60,12 +60,12 @@ class ViewController: UIViewController {
         
         
         view.addSubview(collectionview)
-        collectionview.backgroundColor = .systemBrown
+        collectionview.backgroundColor = UIColor(red: 128/255, green: 0, blue: 32/255, alpha: 0.75)
         
         collectionview.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            collectionview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 70),
+            collectionview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             collectionview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             collectionview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionview.trailingAnchor.constraint(equalTo: view.trailingAnchor)
@@ -106,6 +106,7 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegateFlo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movie_cell", for: indexPath) as! Movie_Cell
         let movie = movieviewmodel.movie(at: indexPath.item)
+//        cell.movie_label.text = movieviewmodel.movieTitle(at: indexPath.item)
         cell.movie_label.text = movie.title
         
         movieviewmodel.fetchImage(at: indexPath.item){
@@ -137,9 +138,16 @@ extension ViewController:UICollectionViewDataSource, UICollectionViewDelegateFlo
         let detailVC = DetailViewController()
         let movie = movieviewmodel.movie(at: indexPath.item)
         
-        detailVC.movie_title = movie.title
-        detailVC.desc = movie.description
         detailVC.castUrls = movie.people
+        print("hello")
+        let ind = indexPath.item
+        
+        detailVC.desc = movieviewmodel.movieDescription(at: ind)
+        detailVC.movie_title = movieviewmodel.movieTitle(at: ind)
+        detailVC.releDate = movieviewmodel.movieReleaseDate(at: ind)
+        detailVC.prod = movieviewmodel.movieProducer(at: ind)
+        detailVC.direc = movieviewmodel.movieDirector(at: ind)
+        
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
